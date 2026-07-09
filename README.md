@@ -55,24 +55,22 @@ A targeted look at non-BRCA1/BRCA2 genes with known breast cancer associations, 
 Full writeup: [docs/breast_cancer_gene_analysis.md](docs/breast_cancer_gene_analysis.md)
 
 ## Repository Structure
-
-​```
 ├── README.md
 ├── docs/
 │   ├── methods.md
 │   ├── results.md
 │   └── breast_cancer_gene_analysis.md
 └── results/
-    ├── fastqc/
-    │   └── fastqc_report.html
-    ├── fastp/
-    │   └── fastp_report.html
-    ├── snpeff/
-    │   ├── snpeff_report.html
-    │   └── snpeff_stats_genes.txt
-    └── vcf/
-        └── SRR37543559.vcf.gz
-​```
+├── fastqc/
+│   └── fastqc_report.html
+├── fastp/
+│   └── fastp_report.html
+├── snpeff/
+│   ├── snpeff_report.html
+│   └── snpeff_stats_genes.txt
+└── vcf/
+└── SRR37543559.vcf.gz
+
 ## Tools Used
 
 - [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) — raw read quality control
