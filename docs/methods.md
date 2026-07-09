@@ -13,7 +13,37 @@
 ### 1. Data retrieval
 Raw reads pulled via `fastq-dump` (single-end mode) on Galaxy Australia.
 
-### 2. Quality control & trimming — fastp v1.3.3
+### 2. Initial quality check — FastQC
+Raw reads assessed for quality before any trimming.
+
+- Total sequences: 25,562,087
+- Total bases: 1 Gbp
+- Sequence length: 40bp
+- Encoding: Sanger / Illumina 1.9
+- %GC: 41%
+- Sequences flagged as poor quality: 0
+
+**Module results:**
+
+| Module | Result |
+|---|---|
+| Basic Statistics | Pass |
+| Per base sequence quality | Pass |
+| Per tile sequence quality | Pass |
+| Per sequence quality scores | Pass |
+| Per base sequence content | **Fail** |
+| Per sequence GC content | Warning |
+| Per base N content | Pass |
+| Sequence Length Distribution | Pass |
+| Sequence Duplication Levels | Pass |
+| Overrepresented sequences | Pass (none found) |
+| Adapter Content | Pass |
+
+The "Per base sequence content" failure is common due to early-cycle positional bias and is not unusual in WGS libraries — it doesn't necessarily indicate a problem, but is one reason a trimming step (fastp) follows regardless.
+
+Full report: [`results/fastqc/fastqc_report.html`](../results/fastqc/fastqc_report.html)
+
+### 3. Quality control & trimming — fastp v1.3.3
 Read quality assessed and low-quality reads/bases trimmed.
 
 - Reads before filtering: 25,562,087
@@ -25,13 +55,13 @@ Read quality assessed and low-quality reads/bases trimmed.
 
 Full report: [`results/fastp/fastp_report.html`](../results/fastp/fastp_report.html)
 
-### 3. Alignment — BWA
+### 4. Alignment — BWA
 Trimmed reads aligned against the hg38 reference genome, producing coordinate-unsorted BAM output.
 
-### 4. Sort — SortSam
+### 5. Sort — SortSam
 Alignments sorted into coordinate order for downstream variant calling.
 
-### 5. Variant calling — FreeBayes v1.3.10
+### 6. Variant calling — FreeBayes v1.3.10
 Variants called from the sorted BAM against hg38.
 
 - Total variant records: 105,517
@@ -39,10 +69,10 @@ Variants called from the sorted BAM against hg38.
 - Indels: 3,725
 - Multi-allelic sites: 153
 
-### 6. Filtering — VCFfilter
+### 7. Filtering — VCFfilter
 Raw FreeBayes output filtered to remove low-confidence calls before annotation.
 
-### 7. Annotation — SnpEff v5.4c
+### 8. Annotation — SnpEff v5.4c
 Filtered VCF annotated against the hg38 gene model.
 
 - Input variant records: 146,436
