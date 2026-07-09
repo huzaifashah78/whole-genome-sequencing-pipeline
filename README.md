@@ -1,2 +1,22 @@
-# whole-genome-sequencing-pipeline
-End-to-end WGS variant calling and annotation pipeline (fastp → BWA → FreeBayes → SnpEff) with a targeted breast cancer gene mutation analysis. Coursework project.
+Raw reads (fastq-dump)
+        │
+        ▼
+   FastQC (initial QC check)
+        │
+        ▼
+   fastp (QC + trimming)
+        │
+        ▼
+   BWA (alignment to hg38)
+        │
+        ▼
+   SortSam (coordinate sort)
+        │
+        ▼
+   FreeBayes (variant calling)
+        │
+        ▼
+   VCFfilter
+        │
+        ▼
+   SnpEff (annotation)
