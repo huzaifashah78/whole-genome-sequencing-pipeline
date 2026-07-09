@@ -7,28 +7,31 @@ A complete WGS variant-calling pipeline run on Galaxy Australia, from raw sequen
 **Platform:** Galaxy Australia
 
 ## Pipeline Overview
+
+```
 Raw reads (fastq-dump)
-│
-▼
-FastQC (initial QC check)
-│
-▼
-fastp (QC + trimming)
-│
-▼
-BWA (alignment to hg38)
-│
-▼
-SortSam (coordinate sort)
-│
-▼
-FreeBayes (variant calling)
-│
-▼
-VCFfilter
-│
-▼
-SnpEff (annotation)
+        │
+        ▼
+   FastQC (initial QC check)
+        │
+        ▼
+   fastp (QC + trimming)
+        │
+        ▼
+   BWA (alignment to hg38)
+        │
+        ▼
+   SortSam (coordinate sort)
+        │
+        ▼
+   FreeBayes (variant calling)
+        │
+        ▼
+   VCFfilter
+        │
+        ▼
+   SnpEff (annotation)
+```
 
 See [docs/methods.md](docs/methods.md) for tool versions and exact parameters.
 
@@ -55,21 +58,24 @@ A targeted look at non-BRCA1/BRCA2 genes with known breast cancer associations, 
 Full writeup: [docs/breast_cancer_gene_analysis.md](docs/breast_cancer_gene_analysis.md)
 
 ## Repository Structure
+
+```
 ├── README.md
 ├── docs/
 │   ├── methods.md
 │   ├── results.md
 │   └── breast_cancer_gene_analysis.md
 └── results/
-├── fastqc/
-│   └── fastqc_report.html
-├── fastp/
-│   └── fastp_report.html
-├── snpeff/
-│   ├── snpeff_report.html
-│   └── snpeff_stats_genes.txt
-└── vcf/
-└── SRR37543559.vcf.gz
+    ├── fastqc/
+    │   └── fastqc_report.html
+    ├── fastp/
+    │   └── fastp_report.html
+    ├── snpeff/
+    │   ├── snpeff_report.html
+    │   └── snpeff_stats_genes.txt
+    └── vcf/
+        └── SRR37543559.vcf.gz
+```
 
 ## Tools Used
 
@@ -88,4 +94,3 @@ This was completed as part of a bioinformatics WGS data analysis coursework modu
 **Muhammad Huzaifa Hussain Shah**
 Email: huzaifa260106@gmail.com
 GitHub: [github.com/huzaifashah78](https://github.com/huzaifashah78)
-====
